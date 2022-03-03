@@ -62,7 +62,7 @@ public class HomeController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
                 
-                ItemController cont = new ItemController();
+                ItemController00 cont = new ItemController00();
                 cont.test="testtingg";
                 loader.setController(cont);
 
