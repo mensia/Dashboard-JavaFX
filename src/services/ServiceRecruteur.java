@@ -65,7 +65,7 @@ public class ServiceRecruteur implements IService {
     public List getAll() {
         List<Recruteur> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM `Recruteur`";
+            String req = "SELECT * FROM `recruteur`";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
