@@ -51,6 +51,9 @@ public class NewMain {
                     case 2:
                         sEt.add(menu.AddEtudiant());
                         break;
+                    case 4:
+                        sEn.add(menu.AddEnseignant());
+                        break;
                     default:
                         break;
                 }

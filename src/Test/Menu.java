@@ -2,6 +2,7 @@ package Test;
 
 import java.util.Scanner;
 
+import modeles.Enseignant;
 import modeles.Etudiant;
 import modeles.Role;
 import modeles.User;
@@ -93,6 +94,32 @@ public class Menu {
         e.setNiveau(Integer.valueOf(in.nextLine()));
         System.out.println("score  = ");
         e.setScore(Integer.valueOf(in.nextLine()));
+
+        return e;
+    }
+
+    public Enseignant AddEnseignant() {
+        Enseignant e = new Enseignant();
+
+        // e = (Etudiant) AddUser();
+        System.out.println("Nom = ");
+        e.setNom(in.nextLine());
+        System.out.println("prenom = ");
+        e.setPrenom(in.nextLine());
+        System.out.println("phone = ");
+        e.setPhone(Integer.valueOf(in.nextLine()));
+        System.out.println("email = ");
+        e.setEmail(in.nextLine());
+        System.out.println("pwd = ");
+        e.setPwd(in.nextLine());
+        System.out.println("carte_banq = ");
+        e.setCarte_banq(in.nextLine());
+        e.setRole(Role.etudiant);
+
+        System.out.println("section  = ");
+        e.setSection(in.nextLine());
+        System.out.println("universite  = ");
+        e.setUniversite(in.nextLine());
 
         return e;
     }
