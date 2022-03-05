@@ -16,5 +16,30 @@ public enum Role {
     enseignant,
     Recruteur,
     admin,
-    empty
+    empty;
+
+    public Role value(String x) {
+
+        Role r;
+        switch (x.toLowerCase()) {
+            case "enseignant":
+                r = enseignant;
+                break;
+            case "etudiant":
+                r = etudiant;
+                break;
+            case "recruteur":
+                r = Recruteur;
+                break;
+            case "admin":
+                r = admin;
+                break;
+
+            default:
+                r = empty;
+                break;
+        }
+        System.out.println("**role = "+r);
+        return r;
+    }
 }

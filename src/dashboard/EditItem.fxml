@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
@@ -16,7 +17,7 @@
    <children>
       <Pane layoutX="29.0" layoutY="22.0" prefHeight="338.0" prefWidth="896.0" style="-fx-background-color: #fff;">
          <children>
-            <ImageView fx:id="img" fitHeight="70.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Img" fitHeight="70.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/reliabilty.png" />
                </image>
@@ -86,7 +87,8 @@
                </font>
             </Label>
             <TextField fx:id="psw" layoutX="576.0" layoutY="206.0" />
-            <JFXComboBox fx:id="type" layoutX="278.0" layoutY="27.0" promptText="Type" />
+            <JFXComboBox fx:id="type2" layoutX="278.0" layoutY="27.0" promptText="Type" />
+            <ComboBox fx:id="typeBox" layoutX="279.0" layoutY="27.0" prefHeight="25.0" prefWidth="83.0" promptText="Type" />
          </children>
          <effect>
             <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
