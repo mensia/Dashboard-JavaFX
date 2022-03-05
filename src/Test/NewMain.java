@@ -5,6 +5,9 @@
  */
 package Test;
 
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modeles.Enseignant;
 import modeles.Etudiant;
 import modeles.Role;
@@ -32,9 +35,10 @@ public class NewMain {
         // Etudiant e = new Etudiant("hana", "bd", 55646466, "mail@mail", "motps",
         // "aaaaa","info",3,100);
         // se.add(e);
-        // User user = new User("Baha", "", 69696969, "bahaeddine.douss@esprit.tn ",
-        // "motps", "aaaaa");
-        User nabil = new User("Nabil", "Bettaib", 93765, "nabil.bettaieb@esprit.tn", "hahahaha", "fsdssvd");
+        // User user = new User("Baha", "", 69696969, "bahaeddine.douss@esprit.tn
+        // ","motps", "aaaaa");
+        // User nabil = new User("Nabil", "Bettaib", 93765, "nabil.bettaieb@esprit.tn",
+        // "hahahaha", "fsdssvd");
         User user = new User("Ramyy", "", 69696969, "mouhamedrami.bendhia@esprit.tn ", "motps", "aaaaa");
         Enseignant ens = new Enseignant(1000, "ahmed", "mahmoud", 2066666, "@gmail.com", "motdpass", "66654", "Esprit",
                 "Math");
@@ -68,7 +72,7 @@ public class NewMain {
             case 5:
                 String subject = "This mail sent from Ez-learning";
                 String body = "Testing..";
-                SendEmail mail = new SendEmail(nabil, subject, body);
+                // SendEmail mail = new SendEmail(nabil, subject, body);
                 System.out.println("*************");
                 break;
             case 6:
@@ -76,11 +80,16 @@ public class NewMain {
                 break;
             case 7:
                 // sU.add(nabil);
-                nabil.resetPassword();
+                // nabil.resetPassword();
                 break;
             case 8:
                 menu.login();
+                break;
+            case 9:
 
+                // } catch (NoSuchAlgorithmException ex) {
+                // Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+                // }
                 break;
 
             default:

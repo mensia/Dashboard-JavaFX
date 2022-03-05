@@ -5,11 +5,16 @@
  */
 package modeles;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.Scanner;
 
 import Test.SendEmail;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import services.ServiceUser;
 
 /**
@@ -17,6 +22,7 @@ import services.ServiceUser;
  * @author Faty
  */
 public class User {
+
     protected int id;
     protected String nom;
     protected String prenom;
@@ -56,6 +62,13 @@ public class User {
         }
     }
 
+    public boolean Login(String mail, String password) throws NoSuchAlgorithmException {
+
+        User u = sU.getByMail(mail);
+        // System.out.println(crypPassword(password).length());
+        return crypPassword(password).equals(u.getPwd());
+    }
+
     public User(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq) {
         this.id = id;
         this.nom = nom;
@@ -79,16 +92,38 @@ public class User {
 
     @Override
     public String toString() {
-        return "{" +
-                " id='" + getId() + "'" +
-                ", nom='" + getNom() + "'" +
-                ", prenom='" + getPrenom() + "'" +
-                ", phone='" + getPhone() + "'" +
-                ", email='" + getEmail() + "'" +
-                ", pwd='" + getPwd() + "'" +
-                ", carte_banq='" + getCarte_banq() + "'" +
-                ", role='" + getRole() + "'" +
-                "}";
+        return "{"
+                + " id='" + getId() + "'"
+                + ", nom='" + getNom() + "'"
+                + ", prenom='" + getPrenom() + "'"
+                + ", phone='" + getPhone() + "'"
+                + ", email='" + getEmail() + "'"
+                + ", pwd='" + getPwd() + "'"
+                + ", carte_banq='" + getCarte_banq() + "'"
+                + ", role='" + getRole() + "'"
+                + "}";
+    }
+
+    // public hashing()
+    public static String crypPassword(String password) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] encoded = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+        byte[] hash = encoded;
+        // System.out.println(encoded);
+        // to hex
+        StringBuilder hexString = new StringBuilder(2 * hash.length);
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if (hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+
+        String haja = encoded.toString();
+        haja = haja.substring(2, haja.length());
+        // return haja;
+        return hexString.toString();
     }
 
     public Role getRole() {

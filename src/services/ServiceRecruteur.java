@@ -35,8 +35,8 @@ public class ServiceRecruteur implements IService {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-            ServiceUser sU = new ServiceUser();
-            sU.add(e);
+        ServiceUser sU = new ServiceUser();
+        sU.add(e);
 
     }
 
@@ -96,7 +96,8 @@ public class ServiceRecruteur implements IService {
             ps.setString(7, e.getRole().toString());
             ps.setString(8, e.getsociete());
             ps.setInt(9, e.getId());
-
+            ServiceUser sU = new ServiceUser();
+            sU.update(e);
             return true;
         } catch (Exception e) {
             return false;
@@ -113,6 +114,8 @@ public class ServiceRecruteur implements IService {
             ps.setInt(1, e.getId());
             ps.executeUpdate();
             System.out.println("Recruteur supprimer");
+            ServiceUser sU = new ServiceUser();
+            sU.delete(e);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

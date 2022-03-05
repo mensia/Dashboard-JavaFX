@@ -17,7 +17,6 @@ public class ServiceEtudiant implements IService {
 
     Connection cnx = DataSource.getInstance().getCnx();
 
-
     public List<Cour> addCours(Etudiant e) {
         List<Cour> cours = new ArrayList<>();
         try {
@@ -55,8 +54,8 @@ public class ServiceEtudiant implements IService {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-            ServiceUser sU = new ServiceUser();
-            sU.add(u);
+        ServiceUser sU = new ServiceUser();
+        sU.add(u);
 
     }
 
@@ -103,7 +102,8 @@ public class ServiceEtudiant implements IService {
             ps.setInt(10, e.getScore());
 
             ps.setInt(11, e.getId());
-
+            ServiceUser sU = new ServiceUser();
+            sU.update(e);
             return true;
         } catch (Exception e) {
             return false;
@@ -120,6 +120,8 @@ public class ServiceEtudiant implements IService {
             ps.setInt(1, e.getId());
             ps.executeUpdate();
             System.out.println("Etudiant supprimer");
+            ServiceUser sU = new ServiceUser();
+            sU.delete(e);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
