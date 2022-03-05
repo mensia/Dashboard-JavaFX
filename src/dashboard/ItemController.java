@@ -105,7 +105,7 @@ public class ItemController implements Initializable {
             section.setText(r.getsociete());
             LabelScore.setVisible(false);
             score.setVisible(false);
-            
+
         }
         if (U.getRole() == Role.enseignant) {
             Enseignant e = (Enseignant) U;
@@ -120,10 +120,12 @@ public class ItemController implements Initializable {
             File file = new File("src/dashboard/images/admin.png");
             Img.setImage(new Image(file.toURI().toString()));
         }
-        else {
+        if (U.getRole() == Role.empty) {
+            LabelScore.setVisible(false);
+            LabelSection.setVisible(false);
 
-//            section.setText("");
-//            score.setText("");
+            section.setText("");
+            score.setText("");
         }
 
     }
@@ -161,7 +163,7 @@ public class ItemController implements Initializable {
         stage.setScene(new Scene(loader.load()));
         stage.show();
         HomeController Close = new HomeController();
-        Close.reload(event);
+//        Close.reload(event);
 //        Parent root = FXMLLoader.load(getClass().getResource("EditItem.fxml"));
 //        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 //        Scene scene = new Scene(root);

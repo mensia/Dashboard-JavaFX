@@ -5,9 +5,14 @@
  */
 package dashboard;
 
+import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -54,7 +59,6 @@ public class EditItemController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    int type = 0;
     @FXML
     private ImageView img;
     ServiceUser sU = new ServiceUser();
@@ -63,7 +67,13 @@ public class EditItemController implements Initializable {
     ServiceRecruteur sR = new ServiceRecruteur();
     @FXML
     private TextField psw;
-    
+    @FXML
+//    private JFXComboBox<?> typeUser;
+    ObservableList types = FXCollections.observableArrayList(
+                "Apple", "Banana", "Pear", "Strawberry", "Peach", "Orange", "Plum");
+        private JFXComboBox<String> typeUser = new JFXComboBox<String>(types);
+    int type = 0;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         if (type == 1) {
@@ -79,6 +89,14 @@ public class EditItemController implements Initializable {
             // section.setText(u.get);
             // score.setText(u.get);
         }
+        ObservableList types = FXCollections.observableArrayList(
+                "Apple", "Banana", "Pear", "Strawberry", "Peach", "Orange", "Plum");
+//        typeUser.getItems().addAll(types);
+//        typeUser.setItems(types);
+        
+//        typeUser.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
+//            System.out.println(newValue);
+//        });
     }
     
     @FXML
@@ -95,7 +113,7 @@ public class EditItemController implements Initializable {
             sU.add(x);
         }
         if (type == 2) {
-        x.setId(u.getId());
+            x.setId(u.getId());
             sU.update(x);
         }
 //        HomeController Close = new HomeController();

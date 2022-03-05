@@ -7,7 +7,6 @@ public class Recruteur extends User {
     public Recruteur() {
         super();
         this.role = Role.Recruteur;
-
     }
 
     public Recruteur(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq,
