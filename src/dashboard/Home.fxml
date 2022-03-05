@@ -233,6 +233,7 @@
                   <Insets left="40.0" />
                </padding>
             </Label>
+            <JFXButton onAction="#AddClicked" text="Add" />
          </children>
       </HBox>
    </children>

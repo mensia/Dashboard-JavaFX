@@ -54,6 +54,9 @@ public class NewMain {
                     default:
                         break;
                 }
+                System.out.println("*****");
+                break;
+
             case 3:
                 menu.updateUser();
                 break;

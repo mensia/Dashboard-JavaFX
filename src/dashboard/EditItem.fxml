@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="949.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.EditItemController">
+<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="949.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="29.0" layoutY="22.0" prefHeight="338.0" prefWidth="896.0" style="-fx-background-color: #fff;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img" fitHeight="70.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/reliabilty.png" />
                </image>
@@ -79,6 +79,12 @@
             <TextField fx:id="carteBancaire" layoutX="576.0" layoutY="138.0" />
             <TextField fx:id="section" layoutX="614.0" layoutY="39.0" prefHeight="25.0" prefWidth="48.0" />
             <TextField fx:id="score" layoutX="725.0" layoutY="39.0" prefHeight="25.0" prefWidth="45.0" />
+            <Label layoutX="576.0" layoutY="181.0" text="Mot de passe" textFill="#aeacac">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="psw" layoutX="576.0" layoutY="206.0" />
          </children>
          <effect>
             <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
