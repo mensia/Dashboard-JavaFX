@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.VolCRUDController">
+   <children>
+      <TableView fx:id="tableVol" layoutX="14.0" layoutY="21.0" prefHeight="127.0" prefWidth="559.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <TextField fx:id="id_agence" layoutX="94.0" layoutY="175.0" />
+      <TextField fx:id="capacity" layoutX="94.0" layoutY="232.0" />
+      <TextField fx:id="prix" layoutX="94.0" layoutY="288.0" />
+      <TextField fx:id="company" layoutX="94.0" layoutY="338.0" />
+      <TextField fx:id="depart" layoutX="385.0" layoutY="175.0" />
+      <TextField fx:id="destination" layoutX="385.0" layoutY="232.0" />
+      <TextField fx:id="date" layoutX="385.0" layoutY="288.0" />
+      <Text layoutX="31.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agence" />
+      <Text layoutX="29.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacite" />
+      <Text layoutX="41.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" />
+      <Text layoutX="26.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company" />
+      <Text layoutX="322.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Depart" />
+      <Text layoutX="310.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Destination" />
+      <Text layoutX="328.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+      <Button layoutX="284.0" layoutY="338.0" mnemonicParsing="false" onAction="#AddVolClicked" text="Ajouter" />
+      <Button layoutX="385.0" layoutY="338.0" mnemonicParsing="false" onAction="#UpdateVolClicked" text="Modifier" />
+      <Button layoutX="482.0" layoutY="338.0" mnemonicParsing="false" onAction="#DeleteVolClicked" text="Supprimer" />
+   </children>
+</AnchorPane>

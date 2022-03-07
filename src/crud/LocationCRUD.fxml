@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.LocationCRUDController">
+   <children>
+      <TableView fx:id="tableLocation" layoutX="26.0" layoutY="14.0" prefHeight="145.0" prefWidth="529.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <TextField fx:id="prix" layoutX="107.0" layoutY="188.0" />
+      <TextField fx:id="date" layoutX="107.0" layoutY="260.0" />
+      <TextField fx:id="destination" layoutX="107.0" layoutY="331.0" />
+      <TextField fx:id="duree" layoutX="394.0" layoutY="188.0" />
+      <TextField fx:id="prix_total" layoutX="394.0" layoutY="260.0" />
+      <Text layoutX="46.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prix" />
+      <Text layoutX="45.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date" />
+      <Text layoutX="26.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="destination" />
+      <Text layoutX="327.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="duree" />
+      <Text layoutX="318.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prix_total" />
+      <Button layoutX="301.0" layoutY="331.0" mnemonicParsing="false" onAction="#AddLocationClicked" text="Ajouter" />
+      <Button layoutX="394.0" layoutY="331.0" mnemonicParsing="false" onAction="#UpdateLocationClicked" text="Modifier" />
+      <Button layoutX="491.0" layoutY="331.0" mnemonicParsing="false" onAction="#DeleteLocationClicked" text="Supprimer" />
+   </children>
+</AnchorPane>

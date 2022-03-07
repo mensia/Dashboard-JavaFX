@@ -58,24 +58,23 @@ public class HomeController implements Initializable {
     @FXML
     private VBox pnl_scroll;
     @FXML
-    private Label lbl_currentprojects;
-    @FXML
-    private Label lbl_pending;
-    @FXML
-    private Label lbl_completed;
-    @FXML
     private ScrollPane Scrollepane;
 
-    @FXML
     private void handleButtonAction(MouseEvent event) {
         refreshNodes();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            // TODO
 //        Scrollepane.gets
-        refreshNodes();
+//        refreshNodes();
+            pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/HotelCRUD.fxml")));
+            
+        } catch (IOException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void refreshNodes() {
@@ -106,10 +105,21 @@ public class HomeController implements Initializable {
 
     @FXML
     private void listUserClicked(ActionEvent event) {
-        refreshNodes();
+                pnl_scroll.getChildren().clear();
+
+        try {
+            // TODO
+//        Scrollepane.gets
+//        refreshNodes();
+        pnl_scroll.getChildren().clear();
+
+            pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/HoteAgenceCRUD.fxml")));
+            
+        } catch (IOException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    @FXML
     private void ListEtudiantClicked(ActionEvent event) {
 //        boxifyVBoxes();
         pnl_scroll.getChildren().clear();
@@ -137,62 +147,6 @@ public class HomeController implements Initializable {
         }
     }
 
-    @FXML
-    private void ListEnseignantClicked(ActionEvent event) {
-        pnl_scroll.getChildren().clear();
-
-        List<Enseignant> listU = sEn.getAll();
-        Node[] nodes = new Node[listU.size()];
-        int i = 0;
-
-        for (Enseignant each : listU) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
-            try {
-                cont.U = each;
-                loader.setController(cont);
-
-                nodes[i] = (Node) loader.load();
-
-                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
-                pnl_scroll.getChildren().add(nodes[i]);
-
-            } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            i++;
-        }
-    }
-
-    @FXML
-    private void ListRecruteurClicked(ActionEvent event) {
-        pnl_scroll.getChildren().clear();
-
-        List<Recruteur> listU = sR.getAll();
-        System.out.println(listU);
-        Node[] nodes = new Node[listU.size()];
-        int i = 0;
-
-        for (Recruteur each : listU) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
-            try {
-                cont.U = each;
-                loader.setController(cont);
-
-                nodes[i] = (Node) loader.load();
-
-                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
-                pnl_scroll.getChildren().add(nodes[i]);
-
-            } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            i++;
-        }
-    }
-
-    @FXML
     public void AddClicked(ActionEvent event) throws IOException {
 //        pnl_scroll.getChildren().clear();
 //        EditItemController cont = new EditItemController();
@@ -215,8 +169,6 @@ public class HomeController implements Initializable {
 
 //        pnl_scroll.getChildren().add(FXMLLoader.load(getClass().getResource("EditItem.fxml")));
     }
-
-    @FXML
 
     public void reload(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
@@ -251,6 +203,97 @@ public class HomeController implements Initializable {
                     .otherwise(unfocusBackground));
 
         }
+    }
+
+    @FXML
+    private void VolClicked(ActionEvent event) {
+                pnl_scroll.getChildren().clear();
+
+        try {
+            // TODO
+//        Scrollepane.gets
+//        refreshNodes();
+            pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/VolCRUD.fxml")));
+            
+        } catch (IOException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void transportClicked(ActionEvent event) {
+                pnl_scroll.getChildren().clear();
+
+        try {
+            // TODO
+//        Scrollepane.gets
+//        refreshNodes();
+            pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/TransportCRUD.fxml")));
+            
+        } catch (IOException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void locationClicked(ActionEvent event) {
+                pnl_scroll.getChildren().clear();
+
+        try {
+            // TODO
+//        Scrollepane.gets
+//        refreshNodes();
+            pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/LocationCRUD.fxml")));
+            
+        } catch (IOException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void hotelClicked(ActionEvent event) {  
+                pnl_scroll.getChildren().clear();
+
+        try {
+            // TODO
+//        Scrollepane.gets
+//        refreshNodes();
+            pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/HotelCRUD.fxml")));
+            
+        } catch (IOException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void reservationClicked(ActionEvent event) {
+                pnl_scroll.getChildren().clear();
+
+        try {
+            // TODO
+//        Scrollepane.gets
+//        refreshNodes();
+            pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/ReservationCRUD.fxml")));
+            
+        } catch (IOException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void sendMailClicked(ActionEvent event) {
+    }
+
+    @FXML
+    private void makeReservationClicked(ActionEvent event) {
+    }
+
+    @FXML
+    private void commanderVolClicked(ActionEvent event) {
+    }
+
+    @FXML
+    private void reserverChambreClicked(ActionEvent event) {
     }
 
 }
