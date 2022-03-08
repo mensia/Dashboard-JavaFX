@@ -15,11 +15,20 @@ public class Locations {
     private float prix;
     private String date;
     private String destination;
-    private String duree;
+    private int duree;
     private float prix_total;
+    private int id_prop ; 
+
+    public int getId_prop() {
+        return id_prop;
+    }
+
+    public void setId_prop(int id_prop) {
+        this.id_prop = id_prop;
+    }
     
     
-    public Locations(int id, float prix, String date, String destination, String duree) {
+    public Locations(int id, float prix, String date, String destination, int duree) {
         this.id = id;
         this.prix = prix;
         this.date = date;
@@ -27,14 +36,14 @@ public class Locations {
         this.duree = duree;
     }
 
-    public Locations(float prix, String date, String destination, String duree) {
+    public Locations(float prix, String date, String destination, int duree) {
         this.prix = prix;
         this.date = date;
         this.destination = destination;
         this.duree = duree;
     }
 
-    public Locations(float prix,float prix_total, String date, String destination, String duree) {
+    public Locations(float prix,float prix_total, String date, String destination, int duree) {
         this.prix = prix;
         this.prix_total = prix_total;
         this.date = date;
@@ -73,7 +82,7 @@ public class Locations {
         return destination;
     }
 
-    public String getDuree() {
+    public int getDuree() {
         return duree;
     }
 
@@ -93,7 +102,7 @@ public class Locations {
         this.destination = destination;
     }
 
-    public void setDuree(String duree) {
+    public void setDuree(int duree) {
         this.duree = duree;
     }
 

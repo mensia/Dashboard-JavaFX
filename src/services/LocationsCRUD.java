@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.util.List;
 
 /**
- *
+ *  
  * @author DELL
  */
 //import edu.connexion3a2.entities.Locations;
@@ -36,14 +36,15 @@ public class LocationsCRUD {
     public void ajouterLocations(Locations C) {
 
         try {
-            String requete = "INSERT INTO locations (prix,prix_total,date,destination,duree) VALUES (?,?,?,?,?)";
+            String requete = "INSERT INTO locations (prix,prix_total,date,destination,duree,id_prop) VALUES (?,?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
            // pst.setInt(1, C.getId());
             pst.setFloat(1, C.getPrix());
              pst.setFloat(2, C.getPrix_total());
             pst.setString(3, C.getDate());
             pst.setString(4, C.getDestination());
-            pst.setString(5, C.getDuree());
+            pst.setInt(5, C.getDuree());
+            pst.setInt(6, C.getId_prop());
 
             pst.executeUpdate();
             System.out.println("Location ajoutée!");
@@ -52,10 +53,10 @@ public class LocationsCRUD {
         }
     }
 
-    public List<Locations> affichageLocations() {
+    public List affichageLocations() {
         List<Locations> myList = new ArrayList();
         try {
-            String requete = "SELECT * FROM locations";
+            String requete = "SELECT * FROM `Locations` ";
             Statement st = cnx.createStatement();
             ResultSet res = st.executeQuery(requete);
 
@@ -65,7 +66,8 @@ public class LocationsCRUD {
                 C.setPrix(res.getFloat(2));
                 C.setDate(res.getString(3));
                 C.setDestination(res.getString(4));
-                C.setDuree(res.getString(5));
+                C.setDuree(res.getInt(5));
+                C.setId_prop(res.getInt(6)); 
                 myList.add(C);
             }
         } catch (SQLException ex) {
