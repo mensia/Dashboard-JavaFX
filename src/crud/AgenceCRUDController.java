@@ -27,6 +27,8 @@ import services.ServiceAgence;
  */
 public class AgenceCRUDController implements Initializable {
 
+    boolean update = false;
+
     @FXML
     private TableView<Agence> tableAgence;
     @FXML
@@ -40,17 +42,20 @@ public class AgenceCRUDController implements Initializable {
     @FXML
     private TextField address;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    Agence a = new Agence();
+
+    void initPage() {
         ServiceAgence sA = new ServiceAgence();
-                
+
         List list = sA.getAll();
         System.out.println(list);
-        ObservableList <Agence> listO =FXCollections.observableArrayList(list);
-        
+        ObservableList<Agence> listO = FXCollections.observableArrayList(list);
+
+        TableColumn idColAgence = new TableColumn("id");
+        idColAgence.setMinWidth(100);
+        idColAgence.setCellValueFactory(
+                new PropertyValueFactory<Agence, String>("id"));
+
         TableColumn id_propColAgence = new TableColumn("id_prop");
         id_propColAgence.setMinWidth(100);
         id_propColAgence.setCellValueFactory(
@@ -76,44 +81,28 @@ public class AgenceCRUDController implements Initializable {
         addressColAgence.setCellValueFactory(
                 new PropertyValueFactory<Agence, String>("address"));
 
-        tableAgence.getColumns().addAll(id_propColAgence, nomColAgence, numeroColAgence, nb_etoileColAgence, addressColAgence);
+        tableAgence.getColumns().addAll(idColAgence, id_propColAgence, nomColAgence, numeroColAgence, nb_etoileColAgence, addressColAgence);
 //        tableAgence.setItems(dataAgence);
-        
+
         tableAgence.setItems(listO);
-        
+    }
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        initPage();
+
     }
 
     @FXML
     private void AddAgenceClicked(ActionEvent event) {
 
         ServiceAgence sA = new ServiceAgence();
-        Agence a = new Agence();
-        int index = tableAgence.getSelectionModel().getSelectedIndex();
-
-        a.setId_prop(Integer.parseInt(id_prop.getText()));
-        a.setNom(nom.getText());
-        a.setNumero(Integer.parseInt(numero.getText()));
-        a.setNb_etoile(Integer.parseInt(nb_etoile.getText()));
-        a.setAddress(address.getText());
-
-        System.out.println(a);
-        sA.add(a);
-
-    }
-
-    @FXML
-    private void UpdateAgenceClicked(ActionEvent event) {
-
-        Agence a = (Agence) tableAgence.getSelectionModel().getSelectedItem();
-
-        id_prop.setText(String.valueOf(a.getId_prop()));
-        nom.setText(a.getNom());
-        numero.setText(String.valueOf(a.getNumero()));
-        nb_etoile.setText(String.valueOf(a.getNb_etoile()));
-        address.setText(String.valueOf(a.getAddress()));
-
-        ServiceAgence sA = new ServiceAgence();
-//        Agence a = new Agence();
+//        if (!update) {
+//            Agence a = new Agence();
+//        }
 //        int index = tableAgence.getSelectionModel().getSelectedIndex();
 
         a.setId_prop(Integer.parseInt(id_prop.getText()));
@@ -122,13 +111,57 @@ public class AgenceCRUDController implements Initializable {
         a.setNb_etoile(Integer.parseInt(nb_etoile.getText()));
         a.setAddress(address.getText());
 
+        if (update) {
+            sA.update(a);
+            id_prop.setText("");
+            nom.setText("");
+            numero.setText("");
+            nb_etoile.setText("");
+            address.setText("");
+//            System.out.println("in update clicked");
+//        System.out.println(a);
+        } else {
+            sA.add(a);
+        }
+        initPage();
+
+    }
+
+    @FXML
+    private void UpdateAgenceClicked(ActionEvent event) {
+
+        a = (Agence) tableAgence.getSelectionModel().getSelectedItem();
+
+        id_prop.setText(String.valueOf(a.getId_prop()));
+        nom.setText(a.getNom());
+        numero.setText(String.valueOf(a.getNumero()));
+        nb_etoile.setText(String.valueOf(a.getNb_etoile()));
+        address.setText(String.valueOf(a.getAddress()));
+
+//        ServiceAgence sA = new ServiceAgence();
+//        Agence a = new Agence();
+//        int index = tableAgence.getSelectionModel().getSelectedIndex();
+//
+//        a.setId_prop(Integer.parseInt(id_prop.getText()));
+//        a.setNom(nom.getText());
+//        a.setNumero(Integer.parseInt(numero.getText()));
+//        a.setNb_etoile(Integer.parseInt(nb_etoile.getText()));
+//        a.setAddress(address.getText());
+        update = true;
+        System.out.println("in update");
         System.out.println(a);
-        sA.update(a);
+//        sA.update(a);
+        initPage();
 
     }
 
     @FXML
     private void DeleteAgenceClicked(ActionEvent event) {
+        a = (Agence) tableAgence.getSelectionModel().getSelectedItem();
+        ServiceAgence sA = new ServiceAgence();
+
+        sA.delete(a);
+        initPage();
     }
 
 }
