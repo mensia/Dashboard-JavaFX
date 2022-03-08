@@ -7,15 +7,15 @@ package services;
 
 import java.util.List;
 
-public interface IService<User> {
-    public void add(User u);
+public interface IService<Object> {
+    public void add(Object u);
 
-    public User getById(int id);
+    public Object getById(int id);
 
-    public List<User> getAll();
+    public List<Object> getAll();
 
-    public boolean update(User u);
+    public boolean update(Object u);
 
-    public boolean delete(User u);
+    public boolean delete(Object u);
 
 }

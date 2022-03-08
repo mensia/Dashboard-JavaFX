@@ -34,15 +34,6 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import modeles.Enseignant;
-import modeles.Etudiant;
-import modeles.Recruteur;
-import static modeles.Role.Recruteur;
-import modeles.User;
-import services.ServiceEns;
-import services.ServiceEtudiant;
-import services.ServiceRecruteur;
-import services.ServiceUser;
 
 /**
  *
@@ -50,10 +41,6 @@ import services.ServiceUser;
  */
 public class HomeController implements Initializable {
 
-    ServiceUser sU = new ServiceUser();
-    ServiceEtudiant sE = new ServiceEtudiant();
-    ServiceEns sEn = new ServiceEns();
-    ServiceRecruteur sR = new ServiceRecruteur();
 
     @FXML
     private VBox pnl_scroll;
@@ -80,27 +67,27 @@ public class HomeController implements Initializable {
     private void refreshNodes() {
         pnl_scroll.getChildren().clear();
 
-        List<User> listU = sU.getAll();
-        Node[] nodes = new Node[listU.size()];
-        int i = 0;
-
-        for (User each : listU) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
-            try {
-                cont.U = each;
-                loader.setController(cont);
-
-                nodes[i] = (Node) loader.load();
-
-                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
-                pnl_scroll.getChildren().add(nodes[i]);
-
-            } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            i++;
-        }
+//        List<User> listU = sU.getAll();
+//        Node[] nodes = new Node[listU.size()];
+//        int i = 0;
+//
+//        for (User each : listU) {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
+//            ItemController cont = new ItemController();
+//            try {
+//                cont.U = each;
+//                loader.setController(cont);
+//
+//                nodes[i] = (Node) loader.load();
+//
+//                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
+//                pnl_scroll.getChildren().add(nodes[i]);
+//
+//            } catch (IOException ex) {
+//                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            i++;
+//        }
     }
 
     @FXML
@@ -113,7 +100,7 @@ public class HomeController implements Initializable {
 //        refreshNodes();
         pnl_scroll.getChildren().clear();
 
-            pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/HoteAgenceCRUD.fxml")));
+            pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/AgenceCRUD.fxml")));
             
         } catch (IOException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
@@ -122,29 +109,29 @@ public class HomeController implements Initializable {
 
     private void ListEtudiantClicked(ActionEvent event) {
 //        boxifyVBoxes();
-        pnl_scroll.getChildren().clear();
-
-        List<Etudiant> listU = sE.getAll();
-        Node[] nodes = new Node[listU.size()];
-        int i = 0;
-
-        for (Etudiant each : listU) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
-            try {
-                cont.U = each;
-                loader.setController(cont);
-
-                nodes[i] = (Node) loader.load();
-
-                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
-                pnl_scroll.getChildren().add(nodes[i]);
-
-            } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            i++;
-        }
+//        pnl_scroll.getChildren().clear();
+//
+//        List<Etudiant> listU = sE.getAll();
+//        Node[] nodes = new Node[listU.size()];
+//        int i = 0;
+//
+//        for (Etudiant each : listU) {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
+//            ItemController cont = new ItemController();
+//            try {
+//                cont.U = each;
+//                loader.setController(cont);
+//
+//                nodes[i] = (Node) loader.load();
+//
+//                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
+//                pnl_scroll.getChildren().add(nodes[i]);
+//
+//            } catch (IOException ex) {
+//                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            i++;
+//        }
     }
 
     public void AddClicked(ActionEvent event) throws IOException {
@@ -154,18 +141,18 @@ public class HomeController implements Initializable {
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditItem.fxml"));
 //        pnl_scroll.getChildren().add(loader.load());
 
-        EditItemController cont = new EditItemController();
-        cont.type = 1;
-//        cont.u = this.U;
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditItem.fxml"));
-        loader.setController(cont);
-//        mainAnchor = loader.load();
-
-        Stage stage = new Stage();
-        stage.setTitle("My New Stage Title");
-        stage.setScene(new Scene(loader.load()));
-        stage.show();
+//        EditItemController cont = new EditItemController();
+//        cont.type = 1;
+////        cont.u = this.U;
+//
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditItem.fxml"));
+//        loader.setController(cont);
+////        mainAnchor = loader.load();
+//
+//        Stage stage = new Stage();
+//        stage.setTitle("My New Stage Title");
+//        stage.setScene(new Scene(loader.load()));
+//        stage.show();
 
 //        pnl_scroll.getChildren().add(FXMLLoader.load(getClass().getResource("EditItem.fxml")));
     }

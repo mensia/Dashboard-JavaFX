@@ -19,7 +19,7 @@ public class DataSource {
     
     private String user = "root";
     private String password = "";
-    private String url = "jdbc:mysql://localhost:3306/pidev";
+    private String url = "jdbc:mysql://localhost:3306/pi";
 
     private static DataSource instance;
     
