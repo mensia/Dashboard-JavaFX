@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.ReservationCRUDController">
    <children>
-      <TableView fx:id="tableReservation" layoutX="30.0" layoutY="14.0" prefHeight="163.0" prefWidth="536.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
+      <TableView fx:id="tableReservation" layoutX="30.0" layoutY="14.0" prefHeight="163.0" prefWidth="536.0" />
       <TextField fx:id="id_user" layoutX="101.0" layoutY="200.0" />
       <TextField fx:id="id_hotel" layoutX="101.0" layoutY="245.0" />
       <TextField fx:id="prix" layoutX="101.0" layoutY="294.0" />

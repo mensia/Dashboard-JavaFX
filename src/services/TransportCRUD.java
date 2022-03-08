@@ -30,13 +30,13 @@ public class TransportCRUD {
     public void ajouterTransport(Transport C) {
 
         try {
-            String requete = "INSERT INTO transport (id,type,num,dispo) VALUES (?,?,?,?)";
+            String requete = "INSERT INTO transport (id,type,num,dispo,id_prop) VALUES (?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setInt(1, C.getId());
             pst.setString(2, C.getType());
             pst.setInt(3, C.getNum());
             pst.setInt(4, C.getDispo());
-
+            pst.setInt(5, C.getId_prop());
             pst.executeUpdate();
             System.out.println("Transport ajoutée!");
         } catch (SQLException ex) {
@@ -57,6 +57,7 @@ public class TransportCRUD {
                 C.setType(res.getString(2));
                 C.setNum(res.getInt(3));
                 C.setDispo(res.getInt(4));
+                C.setId_prop(res.getInt(5));
                 myList.add(C);
             }
         } catch (SQLException ex) {
@@ -69,7 +70,7 @@ public class TransportCRUD {
 
     public void modifierTransport(Transport C) {
         try {
-            String req = "UPDATE transport SET type='" + C.getType() + "', num='" + C.getNum() + "', dispo='" + C.getDispo() + "' WHERE id=" + C.getId();
+            String req = "UPDATE transport SET type='" + C.getType() + "', num='" + C.getNum() + "', dispo='" + C.getDispo() + "', id_prop='" + C.getId_prop() + "' WHERE id=" + C.getId();
             PreparedStatement st = cnx.prepareStatement(req);
             st.executeUpdate(req);
             System.out.println("Transport modifée !");
@@ -102,6 +103,7 @@ public class TransportCRUD {
                 C.setType(res.getString(2));
                 C.setNum(res.getInt(3));
                 C.setDispo(res.getInt(4));
+                C.setId_prop(res.getInt(5));
                 myList.add(C);
             }
         } catch (SQLException ex) {

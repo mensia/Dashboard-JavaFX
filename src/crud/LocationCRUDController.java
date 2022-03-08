@@ -6,6 +6,7 @@
 package crud;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,7 +50,9 @@ public class LocationCRUDController implements Initializable {
     
     void initPage() {
        LocationsCRUD sL = new LocationsCRUD();
-        ObservableList<Locations> data = FXCollections.observableArrayList(sL.affichageLocations());
+       List list = sL.affichageLocations();
+        System.out.println(list);
+        ObservableList<Locations> listO = FXCollections.observableArrayList(list);
 
         TableColumn idCol = new TableColumn("id");
         idCol.setMinWidth(100);
@@ -88,6 +91,7 @@ public class LocationCRUDController implements Initializable {
 
         tableLocation.getColumns().addAll(idCol, prixCol, dateCol, destinationCol, dureeCol, propcol, prix_totalCol );
        // tableLocation.setItems(data);
+    //   tableLocation.setItems(listO);
     }
     
     @Override
@@ -148,5 +152,4 @@ public class LocationCRUDController implements Initializable {
         sA.supprimerLocations(l.getId());
         initPage();
     }
-    
 }

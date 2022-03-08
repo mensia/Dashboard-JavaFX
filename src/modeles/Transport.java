@@ -15,6 +15,15 @@ public class Transport {
     private String type;
     private int dispo;
     private int num;
+    private int id_prop ; 
+
+    public int getId_prop() {
+        return id_prop;
+    }
+
+    public void setId_prop(int id_prop) {
+        this.id_prop = id_prop;
+    }
     
         public Transport() {
         

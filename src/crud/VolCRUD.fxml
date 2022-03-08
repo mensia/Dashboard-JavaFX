@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.VolCRUDController">
    <children>
-      <TableView fx:id="tableVol" layoutX="14.0" layoutY="21.0" prefHeight="127.0" prefWidth="559.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
+      <TableView fx:id="tableVol" layoutX="14.0" layoutY="21.0" prefHeight="127.0" prefWidth="559.0" />
       <TextField fx:id="id_agence" layoutX="94.0" layoutY="175.0" />
       <TextField fx:id="capacity" layoutX="94.0" layoutY="232.0" />
       <TextField fx:id="prix" layoutX="94.0" layoutY="288.0" />
