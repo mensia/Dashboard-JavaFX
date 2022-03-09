@@ -29,7 +29,7 @@ import services.ServiceVol;
 public class VolCRUDController implements Initializable {
 
     @FXML
-    private TableView<?> tableVol;
+    private TableView<Vol> tableVol;
     @FXML
     private TextField id_agence;
     @FXML
@@ -56,6 +56,8 @@ public class VolCRUDController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+                initPage();
+
     }    
     void initPage(){
      ServiceVol sv = new ServiceVol();
@@ -103,7 +105,7 @@ public class VolCRUDController implements Initializable {
         
        
 
-     //   tableVol.setItems(listO);
+        tableVol.setItems(listO);
     }
 
     @FXML

@@ -30,7 +30,7 @@ import services.TransportCRUD;
 public class TransportCRUDController implements Initializable {
 
     @FXML
-    private TableView<?> tableTransport;
+    private TableView<Transport> tableTransport;
     @FXML
     private TextField type;
     @FXML
@@ -78,12 +78,15 @@ public class TransportCRUDController implements Initializable {
         
 
         tableTransport.getColumns().addAll(idCol, typeCol, dispoCol, numCol, idPropCol);
+        tableTransport.setItems(data);
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+                initPage();
+
     }
 
     @FXML

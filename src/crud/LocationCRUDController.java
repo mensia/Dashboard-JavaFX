@@ -28,7 +28,7 @@ import services.LocationsCRUD;
 public class LocationCRUDController implements Initializable {
 
     @FXML
-    private TableView<?> tableLocation;
+    private TableView<Locations> tableLocation;
     @FXML
     private TextField prix;
     @FXML
@@ -91,7 +91,7 @@ public class LocationCRUDController implements Initializable {
 
         tableLocation.getColumns().addAll(idCol, prixCol, dateCol, destinationCol, dureeCol, propcol, prix_totalCol );
        // tableLocation.setItems(data);
-    //   tableLocation.setItems(listO);
+       tableLocation.setItems(listO);
     }
     
     @Override

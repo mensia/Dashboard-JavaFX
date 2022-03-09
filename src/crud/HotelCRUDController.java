@@ -32,7 +32,7 @@ public class HotelCRUDController implements Initializable {
      boolean update = false;
     
     @FXML
-    private TableView<?> tableHotel;
+    private TableView<Hotel> tableHotel;
     @FXML
     private TextField id_prop;
     @FXML
@@ -95,12 +95,12 @@ public class HotelCRUDController implements Initializable {
 
         tableHotel.getColumns().addAll(id_responsableColHotel, nomColHotel, addressColHotel, nb_etoileColHotel, phoneColHotel, capaciteColHotel);
         
-        // tableHotel.setItems(listO);
+        tableHotel.setItems(listO);
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        initPage();
     }   
 
     @FXML

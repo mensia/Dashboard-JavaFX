@@ -31,7 +31,7 @@ import services.ServiceReservation;
 public class ReservationCRUDController implements Initializable {
 
     @FXML
-    private TableView<?> tableReservation;
+    private TableView<Reservation> tableReservation;
     @FXML
     private TextField id_user;
     @FXML
@@ -94,12 +94,14 @@ public class ReservationCRUDController implements Initializable {
                 new PropertyValueFactory<Reservation, String>("description"));
 
         tableReservation.getColumns().addAll(id_userColReservation, id_hotelColReservation, prixColReservation, entreeColReservation, sortieColReservation, num_chambreColReservation, descriptionColReservation);
-       
+       tableReservation.setItems(dataRes);
 }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+                initPage();
+
     }    
 
     @FXML
