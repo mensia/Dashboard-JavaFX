@@ -8,7 +8,6 @@ package crud;
 import java.net.URL;
 import java.sql.Date;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -17,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -43,20 +43,21 @@ public class ReservationCRUDController implements Initializable {
     private TextField num_chambre;
     @FXML
     private TextField description;
-    @FXML
     private TextField entree;
-    @FXML
     private TextField sortie;
 
     /**
      * Initializes the controller class.
      */
-    
     boolean update = false;
-    Reservation r = new Reservation(); 
-    
-     void initPage() {
-   
+    Reservation r = new Reservation();
+    @FXML
+    private DatePicker dateentre;
+    @FXML
+    private DatePicker datesortie;
+
+    void initPage() {
+
         TableColumn id_userColReservation = new TableColumn("id_user");
         id_userColReservation.setMinWidth(100);
         id_userColReservation.setCellValueFactory(
@@ -93,43 +94,45 @@ public class ReservationCRUDController implements Initializable {
                 new PropertyValueFactory<Reservation, String>("description"));
 
         tableReservation.getColumns().addAll(id_userColReservation, id_hotelColReservation, prixColReservation, entreeColReservation, sortieColReservation, num_chambreColReservation, descriptionColReservation);
-       updateList();
-}
+        updateList();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-                initPage();
+        initPage();
 
-    }    
+    }
 
     @FXML
     private void AddReservationClicked(ActionEvent event) {
-         ServiceReservation sr = new ServiceReservation();
+        ServiceReservation sr = new ServiceReservation();
         r.setId_user(Integer.parseInt(id_user.getText()));
         r.setId_hotel(Integer.parseInt(id_hotel.getText()));
         r.setPrix(Integer.parseInt(prix.getText()));
-       
-             Date d = (Date.valueOf(entree.getText()));
-             Date d1 = (Date.valueOf(sortie.getText()));
-             ZoneId defaultZoneId = ZoneId.systemDefault();
-             Instant ins = d.toInstant() ; 
-             Instant ins2 = d1.toInstant() ;
-             LocalDate Local = ins.atZone(defaultZoneId).toLocalDate(); 
-             LocalDate Local2 = ins2.atZone(defaultZoneId).toLocalDate(); 
-             r.setEntree(Local);
-             r.setSortie(Local2);
-      
+
+        r.setEntree(dateentre.getValue());
+        r.setSortie(datesortie.getValue());
+
         r.setNum_chambre(Integer.parseInt(num_chambre.getText()));
         r.setDescription(description.getText());
-       
 
+//       
+        System.out.println("res= " + r);
+//             Date d = (dateentre.getValue());
+//             Date d1 = (Date.valueOf(sortie.getText()));
+//             ZoneId defaultZoneId = ZoneId.systemDefault();
+//             Instant ins = d.toInstant() ; 
+//             Instant ins2 = d1.toInstant() ;
+//             LocalDate Local = ins.atZone(defaultZoneId).toLocalDate(); 
+//             LocalDate Local2 = ins2.atZone(defaultZoneId).toLocalDate(); 
+//             r.setEntree(Local);
+//             r.setSortie(Local2);
         if (update) {
             sr.update(r);
             description.setText("");
             num_chambre.setText("");
-            entree.setText("");
-            sortie.setText("");
+
             prix.setText("");
             id_hotel.setText("");
             id_user.setText("");
@@ -138,32 +141,32 @@ public class ReservationCRUDController implements Initializable {
         } else {
             sr.add(r);
         }
-         updateList();
+        updateList();
         Empty();
-        
+
     }
 
     @FXML
     private void UpdateReservationClicked(ActionEvent event) {
         r = (Reservation) tableReservation.getSelectionModel().getSelectedItem();
 
-         ServiceReservation sr = new ServiceReservation();
-        r.setId_user(Integer.parseInt(id_user.getText()));
-        r.setId_hotel(Integer.parseInt(id_hotel.getText()));
-        r.setPrix(Integer.parseInt(prix.getText()));
-       
-             Date d = (Date.valueOf(entree.getText()));
-             Date d1 = (Date.valueOf(sortie.getText()));
-             ZoneId defaultZoneId = ZoneId.systemDefault();
-             Instant ins = d.toInstant() ; 
-             Instant ins2 = d1.toInstant() ;
-             LocalDate Local = ins.atZone(defaultZoneId).toLocalDate(); 
-             LocalDate Local2 = ins2.atZone(defaultZoneId).toLocalDate(); 
-             r.setEntree(Local);
-             r.setSortie(Local2);
+        ServiceReservation sr = new ServiceReservation();
       
-        r.setNum_chambre(Integer.parseInt(num_chambre.getText()));
-        r.setDescription(description.getText());
+        id_user.setText(String.valueOf(r.getId_user()));
+        id_hotel.setText(String.valueOf(r.getId_hotel()));
+        prix.setText(String.valueOf(r.getPrix()));
+        
+        dateentre.setValue(r.getEntree());
+        datesortie.setValue(r.getSortie());
+        
+        num_chambre.setText(String.valueOf(r.getNum_chambre()));
+        description.setText(String.valueOf(r.getDescription()));
+        
+        
+                
+        
+//        r.setNum_chambre(Integer.parseInt(num_chambre.getText()));
+//        r.setDescription(description.getText());
 
         update = true;
         System.out.println("in update");
@@ -180,23 +183,23 @@ public class ReservationCRUDController implements Initializable {
         sr.delete(r);
         initPage();
     }
-    
-     private void Empty() {
-       description.setText("");
-            num_chambre.setText("");
-            entree.setText("");
-            sortie.setText("");
-            prix.setText("");
-            id_hotel.setText("");
-            id_user.setText("");
+
+    private void Empty() {
+        description.setText("");
+        num_chambre.setText("");
+//        entree.setText("");
+//        sortie.setText("");
+        prix.setText("");
+        id_hotel.setText("");
+        id_user.setText("");
     }
-     
-     public void updateList() {
-         ServiceReservation sR = new ServiceReservation();
-          List list = sR.getAll();
+
+    public void updateList() {
+        ServiceReservation sR = new ServiceReservation();
+        List list = sR.getAll();
         ObservableList<Reservation> dataRes = FXCollections.observableArrayList(sR.getAll());
 
         tableReservation.setItems(dataRes);
     }
-    
+
 }

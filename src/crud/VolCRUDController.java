@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -43,7 +44,7 @@ public class VolCRUDController implements Initializable {
     @FXML
     private TextField destination;
     @FXML
-    private TextField date;
+    private DatePicker date;
 
     /**
      * Initializes the controller class.
@@ -113,11 +114,11 @@ public class VolCRUDController implements Initializable {
         v.setDestination(destination.getText());
         v.setDepart(depart.getText());
         v.setCompany(company.getText());
-        v.setDate(Date.valueOf(date.getText()));
+//        v.setDate(date.getValue());
 
         if (update) {
             sv.update(v);
-            date.setText("");
+//            date.setText("");
              company.setText("");
              depart.setText(""); 
              destination.setText(""); 
@@ -143,7 +144,7 @@ public class VolCRUDController implements Initializable {
         prix.setText(String.valueOf(v.getPrix()));
         destination.setText(String.valueOf(v.getDestination()));
         depart.setText(String.valueOf(v.getDepart()));
-        date.setText(String.valueOf(v.getDate()));
+//        date.setText(String.valueOf(v.getDate()));
         company.setText(String.valueOf(v.getCompany()));
 
         update = true;
@@ -175,7 +176,7 @@ public class VolCRUDController implements Initializable {
     }
     
     private void Empty() {
-        date.setText("");
+//        date.setText("");
              company.setText("");
              depart.setText(""); 
              destination.setText(""); 

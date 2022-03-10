@@ -88,13 +88,13 @@ public class LocationCRUDController implements Initializable {
          TableColumn propcol = new TableColumn("prop");
         propcol.setMinWidth(100);
         propcol.setCellValueFactory(
-                new PropertyValueFactory<Locations, String>("prop"));
+                new PropertyValueFactory<Locations, String>("Id_prop"));
 
         
          TableColumn idTranslCol = new TableColumn("idTransport");
         idTranslCol.setMinWidth(100);
         idTranslCol.setCellValueFactory(
-                new PropertyValueFactory<Locations, String>("idTransport"));
+                new PropertyValueFactory<Locations, String>("Id_transport"));
 
         tableLocation.getColumns().addAll(idCol, prixCol, prix_totalCol , dateCol, destinationCol, dureeCol, propcol,  idTranslCol );
        // tableLocation.setItems(data);

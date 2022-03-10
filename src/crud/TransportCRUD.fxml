@@ -13,7 +13,6 @@
       <TableView fx:id="tableTransport" layoutX="29.0" layoutY="14.0" prefHeight="320.0" prefWidth="546.0" />
       <TextField fx:id="num" layoutX="424.0" layoutY="405.0" />
       <Text layoutX="71.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type" />
-      <Text layoutX="353.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dispo" />
       <Text layoutX="356.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="num" />
       <Button layoutX="29.0" layoutY="458.0" mnemonicParsing="false" onAction="#AddTransportClicked" text="Ajouter" />
       <Button layoutX="270.0" layoutY="458.0" mnemonicParsing="false" onAction="#UpdateTransportClicked" text="Modifier" />
