@@ -57,7 +57,7 @@ public class LocationsCRUD {
     public List affichageLocations() {
         List<Locations> myList = new ArrayList();
         try {
-            String requete = "SELECT * FROM `Locations` ";
+            String requete = "SELECT * FROM `locations` ";
             Statement st = cnx.createStatement();
             ResultSet res = st.executeQuery(requete);
 
@@ -65,11 +65,12 @@ public class LocationsCRUD {
                 Locations C = new Locations();
                 C.setId(res.getInt(1));
                 C.setPrix(res.getFloat(2));
-                C.setDate(res.getString(3));
-                C.setDestination(res.getString(4));
-                C.setDuree(res.getInt(5));
-                C.setId_prop(res.getInt(6)); 
-                C.setId_transport(res.getInt(7));
+                C.setPrix_total(res.getInt(3));
+                C.setDate(res.getString(4));
+                C.setDestination(res.getString(5));
+                C.setDuree(res.getInt(6));
+                C.setId_prop(res.getInt(7)); 
+                C.setId_transport(res.getInt(8));
                 myList.add(C);
             }
         } catch (SQLException ex) {

@@ -61,6 +61,12 @@ public class LocationCRUDController implements Initializable {
         prixCol.setMinWidth(100);
         prixCol.setCellValueFactory(
                 new PropertyValueFactory<Locations, String>("prix"));
+        
+        TableColumn prix_totalCol = new TableColumn("prix_total");
+        prix_totalCol.setMinWidth(100);
+        prix_totalCol.setCellValueFactory(
+                new PropertyValueFactory<Locations, String>("prix_total"));
+
 
         TableColumn dateCol = new TableColumn("date");
         dateCol.setMinWidth(100);
@@ -82,17 +88,13 @@ public class LocationCRUDController implements Initializable {
         propcol.setCellValueFactory(
                 new PropertyValueFactory<Locations, String>("prop"));
 
-        TableColumn prix_totalCol = new TableColumn("prix_total");
-        prix_totalCol.setMinWidth(100);
-        prix_totalCol.setCellValueFactory(
-                new PropertyValueFactory<Locations, String>("prix_total"));
-
+        
          TableColumn idTranslCol = new TableColumn("idTransport");
         idTranslCol.setMinWidth(100);
         idTranslCol.setCellValueFactory(
                 new PropertyValueFactory<Locations, String>("idTransport"));
 
-        tableLocation.getColumns().addAll(idCol, prixCol, dateCol, destinationCol, dureeCol, propcol, prix_totalCol , idTranslCol );
+        tableLocation.getColumns().addAll(idCol, prixCol, prix_totalCol , dateCol, destinationCol, dureeCol, propcol,  idTranslCol );
        // tableLocation.setItems(data);
        
        updateList();
@@ -136,18 +138,21 @@ public class LocationCRUDController implements Initializable {
     private void UpdateLocationClicked(ActionEvent event) {
     
      l = (Locations) tableLocation.getSelectionModel().getSelectedItem();
-
-        l.setDate(date.getText());
-        l.setDestination(destination.getText());
-        l.setDuree(Integer.parseInt(duree.getText()));
-        l.setPrix(Float.parseFloat(prix.getText()));
-        l.setId_prop(Integer.parseInt(Proprietaire.getText()));
-        l.setId_transport(Integer.parseInt(id_transport.getText()));
+        System.out.println(l);
+        
+        Proprietaire.setText(String.valueOf(l.getId_prop()));
+            date.setText(String.valueOf(l.getDate()));
+            destination.setText(l.getDestination());
+            duree.setText(String.valueOf(l.getDuree()));
+            prix.setText(String.valueOf(l.getPrix()));
+            id_transport.setText(String.valueOf(l.getId_transport()));
+     
+     
         update = true;
         System.out.println("in update");
         System.out.println(l);
 
-        initPage();
+        
         
     }
     
@@ -167,17 +172,19 @@ public class LocationCRUDController implements Initializable {
        List list = sL.affichageLocations();
         System.out.println(list);
         ObservableList<Locations> listO = FXCollections.observableArrayList(list);
-
- tableLocation.setItems(listO);
+        sL.calculPrixTot();
+        tableLocation.setItems(listO);
     }
     
      private void Empty() {
+         LocationsCRUD sL = new LocationsCRUD();
        Proprietaire.setText("");
             date.setText("");
             destination.setText("");
             duree.setText("");
             prix.setText("");
             id_transport.setText("");
+             sL.calculPrixTot();
     }
     
 }
