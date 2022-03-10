@@ -37,27 +37,35 @@ public class Locations {
     }
     
     
-    public Locations(int id, float prix, String date, String destination, int duree) {
+    public Locations(int id, float prix, String date, String destination, int duree , int id_prop , int id_transport ) {
         this.id = id;
         this.prix = prix;
         this.date = date;
         this.destination = destination;
         this.duree = duree;
+        this.id_prop = id_prop ;
+        this.id_transport = id_transport ; 
     }
 
-    public Locations(float prix, String date, String destination, int duree) {
+    public Locations(float prix, String date, String destination, int duree , int id_prop , int id_transport ) {
         this.prix = prix;
         this.date = date;
         this.destination = destination;
         this.duree = duree;
+        this.id_prop = id_prop ;
+        this.id_transport = id_transport ; 
+    
     }
 
-    public Locations(float prix,float prix_total, String date, String destination, int duree) {
+    public Locations(float prix,float prix_total, String date, String destination, int duree , int id_prop , int id_transport ) {
         this.prix = prix;
         this.prix_total = prix_total;
         this.date = date;
         this.destination = destination;
         this.duree = duree;
+        this.id_prop = id_prop ;
+        this.id_transport = id_transport ; 
+    
         
     }
     
@@ -111,7 +119,7 @@ public class Locations {
         this.destination = destination;
     }
 
-    public void setDuree(int duree) {
+    public void setDuree(int duree) {   
         this.duree = duree;
     }
 

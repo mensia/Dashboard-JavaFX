@@ -6,6 +6,7 @@
 package crud;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -13,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -32,7 +34,7 @@ public class LocationCRUDController implements Initializable {
     @FXML
     private TextField prix;
     @FXML
-    private TextField date;
+    private DatePicker date;
     @FXML
     private TextField destination;
     @FXML
@@ -111,7 +113,7 @@ public class LocationCRUDController implements Initializable {
     private void AddLocationClicked(ActionEvent event) {
             LocationsCRUD sL = new LocationsCRUD();
 
-        l.setDate(date.getText());
+        l.setDate(date.getValue().toString());
         l.setDestination(destination.getText());
         l.setDuree(Integer.parseInt(duree.getText()));
         l.setPrix(Float.parseFloat(prix.getText()));
@@ -121,7 +123,7 @@ public class LocationCRUDController implements Initializable {
         if (update) {
             sL.modifierLocations(l);
             Proprietaire.setText("");
-            date.setText("");
+            date.setValue(LocalDate.MAX);
             destination.setText("");
             duree.setText("");
             prix.setText("");
@@ -141,7 +143,7 @@ public class LocationCRUDController implements Initializable {
         System.out.println(l);
         
         Proprietaire.setText(String.valueOf(l.getId_prop()));
-            date.setText(String.valueOf(l.getDate()));
+            date.setValue(LocalDate.parse(l.getDate()));
             destination.setText(l.getDestination());
             duree.setText(String.valueOf(l.getDuree()));
             prix.setText(String.valueOf(l.getPrix()));
@@ -179,7 +181,7 @@ public class LocationCRUDController implements Initializable {
      private void Empty() {
          LocationsCRUD sL = new LocationsCRUD();
        Proprietaire.setText("");
-            date.setText("");
+            date.setValue(LocalDate.MAX);
             destination.setText("");
             duree.setText("");
             prix.setText("");
