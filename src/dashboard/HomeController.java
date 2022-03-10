@@ -283,4 +283,12 @@ public class HomeController implements Initializable {
     private void reserverChambreClicked(ActionEvent event) {
     }
 
+    @FXML
+    private void activiteClicked(ActionEvent event) {
+    }
+
+    @FXML
+    private void reglementClicked(ActionEvent event) {
+    }
+
 }

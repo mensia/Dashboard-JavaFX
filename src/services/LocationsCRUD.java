@@ -36,7 +36,7 @@ public class LocationsCRUD {
     public void ajouterLocations(Locations C) {
 
         try {
-            String requete = "INSERT INTO locations (prix,prix_total,date,destination,duree,id_prop) VALUES (?,?,?,?,?,?)";
+            String requete = "INSERT INTO locations (prix,prix_total,date,destination,duree,id_prop,id_transport) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
            // pst.setInt(1, C.getId());
             pst.setFloat(1, C.getPrix());
@@ -45,6 +45,7 @@ public class LocationsCRUD {
             pst.setString(4, C.getDestination());
             pst.setInt(5, C.getDuree());
             pst.setInt(6, C.getId_prop());
+            pst.setInt(7,C.getId_transport());
 
             pst.executeUpdate();
             System.out.println("Location ajoutée!");
@@ -68,6 +69,7 @@ public class LocationsCRUD {
                 C.setDestination(res.getString(4));
                 C.setDuree(res.getInt(5));
                 C.setId_prop(res.getInt(6)); 
+                C.setId_transport(res.getInt(7));
                 myList.add(C);
             }
         } catch (SQLException ex) {
@@ -80,7 +82,7 @@ public class LocationsCRUD {
 
     public void modifierLocations(Locations C) {
         try {
-            String req = "UPDATE locations SET prix='" + C.getPrix() + "', date='" + C.getDate() + "', destination='" + C.getDestination() + "', duree='" + C.getDuree() + "' WHERE id=" + C.getId();
+            String req = "UPDATE locations SET prix='" + C.getPrix() + "', date='" + C.getDate() + "', destination='" + C.getDestination() + "', duree='" + C.getDuree() + "', id_transport='" + C.getId_transport()+ "' WHERE id=" + C.getId();
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("Location modifée !");

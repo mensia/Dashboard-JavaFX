@@ -47,13 +47,11 @@ public class LocationCRUDController implements Initializable {
      Locations l = new Locations () ; 
     @FXML
     private TextField Proprietaire;
+    @FXML
+    private TextField id_transport;
     
     void initPage() {
-       LocationsCRUD sL = new LocationsCRUD();
-       List list = sL.affichageLocations();
-        System.out.println(list);
-        ObservableList<Locations> listO = FXCollections.observableArrayList(list);
-
+      
         TableColumn idCol = new TableColumn("id");
         idCol.setMinWidth(100);
         idCol.setCellValueFactory(
@@ -89,9 +87,16 @@ public class LocationCRUDController implements Initializable {
         prix_totalCol.setCellValueFactory(
                 new PropertyValueFactory<Locations, String>("prix_total"));
 
-        tableLocation.getColumns().addAll(idCol, prixCol, dateCol, destinationCol, dureeCol, propcol, prix_totalCol );
+         TableColumn idTranslCol = new TableColumn("idTransport");
+        idTranslCol.setMinWidth(100);
+        idTranslCol.setCellValueFactory(
+                new PropertyValueFactory<Locations, String>("idTransport"));
+
+        tableLocation.getColumns().addAll(idCol, prixCol, dateCol, destinationCol, dureeCol, propcol, prix_totalCol , idTranslCol );
        // tableLocation.setItems(data);
-       tableLocation.setItems(listO);
+       
+       updateList();
+      
     }
     
     @Override
@@ -109,6 +114,7 @@ public class LocationCRUDController implements Initializable {
         l.setDuree(Integer.parseInt(duree.getText()));
         l.setPrix(Float.parseFloat(prix.getText()));
         l.setId_prop(Integer.parseInt(Proprietaire.getText()));
+        l.setId_transport(Integer.parseInt(id_transport.getText()));
 
         if (update) {
             sL.modifierLocations(l);
@@ -117,11 +123,13 @@ public class LocationCRUDController implements Initializable {
             destination.setText("");
             duree.setText("");
             prix.setText("");
+            id_transport.setText("");
 
         } else {
             sL.ajouterLocations(l);
         }
-        initPage();
+         updateList();
+        Empty();
     }
 
     @FXML
@@ -134,6 +142,7 @@ public class LocationCRUDController implements Initializable {
         l.setDuree(Integer.parseInt(duree.getText()));
         l.setPrix(Float.parseFloat(prix.getText()));
         l.setId_prop(Integer.parseInt(Proprietaire.getText()));
+        l.setId_transport(Integer.parseInt(id_transport.getText()));
         update = true;
         System.out.println("in update");
         System.out.println(l);
@@ -152,4 +161,23 @@ public class LocationCRUDController implements Initializable {
         sA.supprimerLocations(l.getId());
         initPage();
     }
+    
+     public void updateList() {
+         LocationsCRUD sL = new LocationsCRUD();
+       List list = sL.affichageLocations();
+        System.out.println(list);
+        ObservableList<Locations> listO = FXCollections.observableArrayList(list);
+
+ tableLocation.setItems(listO);
+    }
+    
+     private void Empty() {
+       Proprietaire.setText("");
+            date.setText("");
+            destination.setText("");
+            duree.setText("");
+            prix.setText("");
+            id_transport.setText("");
+    }
+    
 }

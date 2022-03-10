@@ -60,12 +60,7 @@ public class VolCRUDController implements Initializable {
 
     }    
     void initPage(){
-     ServiceVol sv = new ServiceVol();
 
-        List list = sv.getAll();
-        System.out.println(list);
-        ObservableList<Vol> listO = FXCollections.observableArrayList(list);
-        
         TableColumn id_agenceColVol = new TableColumn("id_agence");
         id_agenceColVol.setMinWidth(100);
         id_agenceColVol.setCellValueFactory(
@@ -103,9 +98,9 @@ public class VolCRUDController implements Initializable {
 
         tableVol.getColumns().addAll(id_agenceColVol, capacityColVol, prixColVol, companyColVol, departColVol, destinationColVol, dateColVol);
         
-       
+        updateList();
 
-        tableVol.setItems(listO);
+       
     }
 
     @FXML
@@ -135,7 +130,8 @@ public class VolCRUDController implements Initializable {
         } else {
             sv.add(v);
         }
-        initPage();
+        updateList();
+        Empty();
     }
 
     @FXML
@@ -165,6 +161,27 @@ public class VolCRUDController implements Initializable {
 
         sv.delete(v);
         initPage();
+    }
+    
+     public void updateList() {
+        ServiceVol sv = new ServiceVol();
+
+        List list = sv.getAll();
+        System.out.println(list);
+        ObservableList<Vol> listO = FXCollections.observableArrayList(list);
+        
+         tableVol.setItems(listO);
+
+    }
+    
+    private void Empty() {
+        date.setText("");
+             company.setText("");
+             depart.setText(""); 
+             destination.setText(""); 
+             prix.setText(""); 
+             capacity.setText(""); 
+             id_agence.setText("");
     }
     
 }

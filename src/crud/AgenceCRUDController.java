@@ -45,11 +45,6 @@ public class AgenceCRUDController implements Initializable {
     Agence a = new Agence();
 
     void initPage() {
-        ServiceAgence sA = new ServiceAgence();
-
-        List list = sA.getAll();
-        System.out.println(list);
-        ObservableList<Agence> listO = FXCollections.observableArrayList(list);
 
         TableColumn idColAgence = new TableColumn("id");
         idColAgence.setMinWidth(100);
@@ -83,8 +78,18 @@ public class AgenceCRUDController implements Initializable {
 
         tableAgence.getColumns().addAll(idColAgence, id_propColAgence, nomColAgence, numeroColAgence, nb_etoileColAgence, addressColAgence);
 //        tableAgence.setItems(dataAgence);
+        updateList();
+    }
+
+    public void updateList() {
+        ServiceAgence sA = new ServiceAgence();
+
+        List list = sA.getAll();
+        System.out.println(list);
+        ObservableList<Agence> listO = FXCollections.observableArrayList(list);
 
         tableAgence.setItems(listO);
+
     }
 
     /**
@@ -123,15 +128,16 @@ public class AgenceCRUDController implements Initializable {
         } else {
             sA.add(a);
         }
-        initPage();
-
+//        initPage();
+        updateList();
+        Empty();
     }
 
     @FXML
     private void UpdateAgenceClicked(ActionEvent event) {
 
         a = (Agence) tableAgence.getSelectionModel().getSelectedItem();
-
+        System.out.println(a);
         id_prop.setText(String.valueOf(a.getId_prop()));
         nom.setText(a.getNom());
         numero.setText(String.valueOf(a.getNumero()));
@@ -151,7 +157,9 @@ public class AgenceCRUDController implements Initializable {
         System.out.println("in update");
         System.out.println(a);
 //        sA.update(a);
-        initPage();
+//        initPage();
+//        updateList();
+//        Empty();
 
     }
 
@@ -162,6 +170,14 @@ public class AgenceCRUDController implements Initializable {
 
         sA.delete(a);
         initPage();
+    }
+
+    private void Empty() {
+        id_prop.setText("");
+        nom.setText("");
+        numero.setText("");
+        nb_etoile.setText("");
+        address.setText("");
     }
 
 }

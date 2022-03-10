@@ -18,6 +18,15 @@ public class Locations {
     private int duree;
     private float prix_total;
     private int id_prop ; 
+    private int id_transport ; 
+
+    public int getId_transport() {
+        return id_transport;
+    }
+
+    public void setId_transport(int id_transport) {
+        this.id_transport = id_transport;
+    }
 
     public int getId_prop() {
         return id_prop;

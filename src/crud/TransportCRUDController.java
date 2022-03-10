@@ -6,6 +6,7 @@
 package crud;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -48,9 +49,7 @@ public class TransportCRUDController implements Initializable {
 
     void initPage() {
 
-        TransportCRUD sT = new TransportCRUD();
-        ObservableList<Transport> data = FXCollections.observableArrayList(sT.affichageTransport());
-
+       
         TableColumn idCol = new TableColumn("id");
         idCol.setMinWidth(100);
         idCol.setCellValueFactory(
@@ -78,8 +77,8 @@ public class TransportCRUDController implements Initializable {
         
 
         tableTransport.getColumns().addAll(idCol, typeCol, dispoCol, numCol, idPropCol);
-        tableTransport.setItems(data);
-
+        
+        updateList();
     }
 
     @Override
@@ -108,7 +107,8 @@ public class TransportCRUDController implements Initializable {
         } else {
             sL.ajouterTransport(t);
         }
-        initPage();
+         updateList();
+        Empty();
 
     }
 
@@ -137,6 +137,22 @@ public class TransportCRUDController implements Initializable {
         sA.supprimerLocations(t.getId());
         initPage();
         
+    }
+    
+    public void updateList() {
+         TransportCRUD sT = new TransportCRUD();
+          List list = sT.affichageTransport();
+        ObservableList<Transport> data = FXCollections.observableArrayList(sT.affichageTransport());
+        tableTransport.setItems(data);
+
+    }
+    
+    private void Empty() {
+        id_prop.setText("");
+        num.setText("");
+            dispo.setText("");
+            type.setText("");
+            id_prop.setText("");
     }
 
 }

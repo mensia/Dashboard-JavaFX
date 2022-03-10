@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -55,9 +56,7 @@ public class ReservationCRUDController implements Initializable {
     Reservation r = new Reservation(); 
     
      void initPage() {
-    ServiceReservation sR = new ServiceReservation();
-        ObservableList<Reservation> dataRes = FXCollections.observableArrayList(sR.getAll());
-
+   
         TableColumn id_userColReservation = new TableColumn("id_user");
         id_userColReservation.setMinWidth(100);
         id_userColReservation.setCellValueFactory(
@@ -94,7 +93,7 @@ public class ReservationCRUDController implements Initializable {
                 new PropertyValueFactory<Reservation, String>("description"));
 
         tableReservation.getColumns().addAll(id_userColReservation, id_hotelColReservation, prixColReservation, entreeColReservation, sortieColReservation, num_chambreColReservation, descriptionColReservation);
-       tableReservation.setItems(dataRes);
+       updateList();
 }
 
     @Override
@@ -139,7 +138,8 @@ public class ReservationCRUDController implements Initializable {
         } else {
             sr.add(r);
         }
-        initPage();
+         updateList();
+        Empty();
         
     }
 
@@ -179,6 +179,24 @@ public class ReservationCRUDController implements Initializable {
 
         sr.delete(r);
         initPage();
+    }
+    
+     private void Empty() {
+       description.setText("");
+            num_chambre.setText("");
+            entree.setText("");
+            sortie.setText("");
+            prix.setText("");
+            id_hotel.setText("");
+            id_user.setText("");
+    }
+     
+     public void updateList() {
+         ServiceReservation sR = new ServiceReservation();
+          List list = sR.getAll();
+        ObservableList<Reservation> dataRes = FXCollections.observableArrayList(sR.getAll());
+
+        tableReservation.setItems(dataRes);
     }
     
 }

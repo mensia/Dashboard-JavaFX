@@ -18,7 +18,7 @@
       <Text layoutX="117.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nom" />
       <Text layoutX="108.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="numero" />
       <Text layoutX="367.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nbr_etoile" />
-      <Text layoutX="376.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="etoiles" />
+      <Text layoutX="376.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Addresse" />
       <Button layoutX="367.0" layoutY="402.0" mnemonicParsing="false" onAction="#AddAgenceClicked" text="Ajouter" />
       <Button layoutX="454.0" layoutY="402.0" mnemonicParsing="false" onAction="#UpdateAgenceClicked" text="Modifier" />
       <Button layoutX="545.0" layoutY="402.0" mnemonicParsing="false" onAction="#DeleteAgenceClicked" text="supprimer" />

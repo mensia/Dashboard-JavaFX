@@ -55,14 +55,19 @@ public class HotelCRUDController implements Initializable {
    
     Hotel h = new Hotel(); 
  
-    
-    void initPage() {
-        ServiceHotel sh = new ServiceHotel();
-
+     public void updateList() {
+          ServiceHotel sh = new ServiceHotel();
         List list = sh.getAll();
         System.out.println(list);
         ObservableList<Hotel> listO = FXCollections.observableArrayList(list);
 
+        tableHotel.setItems(listO);
+
+    }
+    void initPage() {
+       
+
+        
        TableColumn id_responsableColHotel = new TableColumn("id_responsable");
         id_responsableColHotel.setMinWidth(100);
         id_responsableColHotel.setCellValueFactory(
@@ -94,14 +99,22 @@ public class HotelCRUDController implements Initializable {
                 new PropertyValueFactory<Hotel, String>("capacite"));
 
         tableHotel.getColumns().addAll(id_responsableColHotel, nomColHotel, addressColHotel, nb_etoileColHotel, phoneColHotel, capaciteColHotel);
+         updateList();
         
-        tableHotel.setItems(listO);
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initPage();
-    }   
+    }  
+    private void Empty() {
+        id_prop.setText("");
+            nom.setText("");
+            phone.setText("");
+            nb_etoile.setText("");
+            address.setText("");
+            capacite.setText("");
+    }
 
     @FXML
     private void AddHotelClicked(ActionEvent event) {
@@ -129,7 +142,8 @@ public class HotelCRUDController implements Initializable {
         } else {
             sh.add(h);
         }
-        initPage();
+         updateList();
+        Empty();
     }
 
     @FXML
@@ -149,7 +163,7 @@ public class HotelCRUDController implements Initializable {
         System.out.println("in update");
         System.out.println(h);
 
-        initPage();
+        
     }
 
     @FXML
