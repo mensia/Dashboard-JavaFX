@@ -9,11 +9,14 @@ import services.ServiceChambre;
 import services.ServiceHotel;
 
 public class Hotel {
+
     private int id;
     private int id_responsable;
     private String nom;
     private String address;
-    private Type type;
+//    private Type type = Type.empty;
+    private String type;
+
     private int nb_etoile;
     private int phone;
     private int capacite;
@@ -39,7 +42,7 @@ public class Hotel {
         this.address = in.nextLine();
         // System.out.println("type= ");
         // this.type =  in.nextLine();
-        this.type = Type.Hotel;
+//        this.type = Type.Hotel;
         System.out.println("nb_etoile= ");
         this.nb_etoile = Integer.parseInt(in.nextLine());
         System.out.println("phone= ");
@@ -49,7 +52,6 @@ public class Hotel {
 
         return this;
     }
-
 
     public void setChambres() {
         ServiceChambre sC = new ServiceChambre();
@@ -76,7 +78,7 @@ public class Hotel {
                 .collect(Collectors.toList());
     }
 
-    public Hotel(int id, int id_responsable, String nom, String address, Type type, int nb_etoile, int phone,
+    public Hotel(int id, int id_responsable, String nom, String address, String type, int nb_etoile, int phone,
             int capacite) {
         this.id = id;
         this.id_responsable = id_responsable;
@@ -88,7 +90,7 @@ public class Hotel {
         this.capacite = capacite;
     }
 
-    public Hotel(int id_responsable, String nom, String address, Type type, int nb_etoile, int phone, int capacite) {
+    public Hotel(int id_responsable, String nom, String address, String type, int nb_etoile, int phone, int capacite) {
         this.id_responsable = id_responsable;
         this.nom = nom;
         this.address = address;
@@ -100,16 +102,16 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return "{" +
-                " id='" + getId() + "'" +
-                ", id_responsable='" + getId_responsable() + "'" +
-                ", nom='" + getNom() + "'" +
-                ", address='" + getAddress() + "'" +
-                ", type='" + getType() + "'" +
-                ", nb_etoile='" + getNb_etoile() + "'" +
-                ", phone='" + getPhone() + "'" +
-                ", capacite='" + getCapacite() + "'" +
-                "}";
+        return "{"
+                + " id='" + getId() + "'"
+                + ", id_responsable='" + getId_responsable() + "'"
+                + ", nom='" + getNom() + "'"
+                + ", address='" + getAddress() + "'"
+                + ", type='" + getType().toString() + "'"
+                + ", nb_etoile='" + getNb_etoile() + "'"
+                + ", phone='" + getPhone() + "'"
+                + ", capacite='" + getCapacite() + "'"
+                + "}";
     }
 
     public int getId() {
@@ -144,14 +146,15 @@ public class Hotel {
         this.address = address;
     }
 
-    public Type getType() {
-        return this.type;
+    public String getType() {
+        return this.type.toString();
     }
 
-    public void setType(Type type) {
+    public void setType(String type) {
         this.type = type;
     }
 
+  
     public int getNb_etoile() {
         return this.nb_etoile;
     }

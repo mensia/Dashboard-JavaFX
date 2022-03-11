@@ -2,13 +2,29 @@ package modeles;
 
 public enum Type {
     Hotel,
-    Maison_t_hote,
+    Maison_Dhut,
     Lounge,
+    empty,
     Appartement;
 
-    public Type type(String t){
-        if(t.equals("Hotel")){
-            return Type.Hotel;
+    public static Type type(String t) {
+        Type x;
+        switch (t.toLowerCase()) {
+            case "hotel":
+                x = Hotel;
+                break;
+            case "maison d'hut":
+                x = Maison_Dhut;
+                break;
+            case "appartement":
+                x = Appartement;
+                break;
+            case "lounge":
+                x = Lounge;
+                break;
+            default:
+                x = empty;
+                break;
         }
         return null;
     }

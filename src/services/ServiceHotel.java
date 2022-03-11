@@ -46,7 +46,7 @@ public class ServiceHotel implements IService {
             ps.setInt(1, h.getId_responsable());
             ps.setString(2, h.getNom());
             ps.setString(3, h.getAddress());
-            ps.setString(4, h.getType().toString());
+            ps.setString(4, h.getType());
             ps.setInt(5, h.getNb_etoile());
             ps.setInt(6, h.getPhone());
             ps.setInt(7, h.getCapacite());
@@ -70,7 +70,7 @@ public class ServiceHotel implements IService {
 
             while (rs.next()) {
                 Hotel hot = new Hotel(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4),
-                        Type.valueOf(rs.getString(5)),
+                        rs.getString(5),
                         rs.getInt(6), rs.getInt(7), rs.getInt(8));
                 h = hot;
             }
@@ -89,7 +89,7 @@ public class ServiceHotel implements IService {
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
                 Hotel u = new Hotel(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4),
-                        Type.valueOf(rs.getString(5)),
+                        rs.getString(5),
                         rs.getInt(6), rs.getInt(7), rs.getInt(8));
                 list.add(u);
             }
