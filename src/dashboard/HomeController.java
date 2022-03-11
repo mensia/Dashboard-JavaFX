@@ -34,13 +34,13 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import metier.Smsapi;
 
 /**
  *
  * @author oXCToo
  */
 public class HomeController implements Initializable {
-
 
     @FXML
     private VBox pnl_scroll;
@@ -58,7 +58,7 @@ public class HomeController implements Initializable {
 //        Scrollepane.gets
 //        refreshNodes();
             pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/HotelCRUD.fxml")));
-            
+
         } catch (IOException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -92,16 +92,16 @@ public class HomeController implements Initializable {
 
     @FXML
     private void listUserClicked(ActionEvent event) {
-                pnl_scroll.getChildren().clear();
+        pnl_scroll.getChildren().clear();
 
         try {
             // TODO
 //        Scrollepane.gets
 //        refreshNodes();
-        pnl_scroll.getChildren().clear();
+            pnl_scroll.getChildren().clear();
 
             pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/AgenceCRUD.fxml")));
-            
+
         } catch (IOException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -153,7 +153,6 @@ public class HomeController implements Initializable {
 //        stage.setTitle("My New Stage Title");
 //        stage.setScene(new Scene(loader.load()));
 //        stage.show();
-
 //        pnl_scroll.getChildren().add(FXMLLoader.load(getClass().getResource("EditItem.fxml")));
     }
 
@@ -194,14 +193,14 @@ public class HomeController implements Initializable {
 
     @FXML
     private void VolClicked(ActionEvent event) {
-                pnl_scroll.getChildren().clear();
+        pnl_scroll.getChildren().clear();
 
         try {
             // TODO
 //        Scrollepane.gets
 //        refreshNodes();
             pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/VolCRUD.fxml")));
-            
+
         } catch (IOException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -209,14 +208,14 @@ public class HomeController implements Initializable {
 
     @FXML
     private void transportClicked(ActionEvent event) {
-                pnl_scroll.getChildren().clear();
+        pnl_scroll.getChildren().clear();
 
         try {
             // TODO
 //        Scrollepane.gets
 //        refreshNodes();
             pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/TransportCRUD.fxml")));
-            
+
         } catch (IOException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -224,29 +223,29 @@ public class HomeController implements Initializable {
 
     @FXML
     private void locationClicked(ActionEvent event) {
-                pnl_scroll.getChildren().clear();
+        pnl_scroll.getChildren().clear();
 
         try {
             // TODO
 //        Scrollepane.gets
 //        refreshNodes();
             pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/LocationCRUD.fxml")));
-            
+
         } catch (IOException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @FXML
-    private void hotelClicked(ActionEvent event) {  
-                pnl_scroll.getChildren().clear();
+    private void hotelClicked(ActionEvent event) {
+        pnl_scroll.getChildren().clear();
 
         try {
             // TODO
 //        Scrollepane.gets
 //        refreshNodes();
             pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/HotelCRUD.fxml")));
-            
+
         } catch (IOException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -254,14 +253,14 @@ public class HomeController implements Initializable {
 
     @FXML
     private void reservationClicked(ActionEvent event) {
-                pnl_scroll.getChildren().clear();
+        pnl_scroll.getChildren().clear();
 
         try {
             // TODO
 //        Scrollepane.gets
 //        refreshNodes();
             pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/crud/ReservationCRUD.fxml")));
-            
+
         } catch (IOException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -284,11 +283,14 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void activiteClicked(ActionEvent event) {
+    private void reglementClicked(ActionEvent event) {
     }
 
     @FXML
-    private void reglementClicked(ActionEvent event) {
+    private void smsClicked(ActionEvent event) {
+
+        Smsapi sms = new Smsapi();
+        Smsapi.sendSMS("+216", "Location confirmer");
     }
 
 }

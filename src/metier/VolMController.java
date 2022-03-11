@@ -7,7 +7,11 @@ package metier;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableView;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -16,6 +20,15 @@ import javafx.fxml.Initializable;
  */
 public class VolMController implements Initializable {
 
+    @FXML
+    private TableView<?> table;
+    @FXML
+    private Text agenceLabel;
+    @FXML
+    private Text volLabel;
+    @FXML
+    private Text prix_totaleLabel;
+
     /**
      * Initializes the controller class.
      */
@@ -23,5 +36,13 @@ public class VolMController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void chooseClicked(ActionEvent event) {
+    }
+
+    @FXML
+    private void confirmClicked(ActionEvent event) {
+    }
     
 }
