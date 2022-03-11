@@ -14,7 +14,7 @@ public class Hotel {
     private int id_responsable;
     private String nom;
     private String address;
-//    private Type type = Type.empty;
+    // private Type type = Type.empty;
     private String type;
 
     private int nb_etoile;
@@ -41,8 +41,8 @@ public class Hotel {
         System.out.println("address= ");
         this.address = in.nextLine();
         // System.out.println("type= ");
-        // this.type =  in.nextLine();
-//        this.type = Type.Hotel;
+        // this.type = in.nextLine();
+        // this.type = Type.Hotel;
         System.out.println("nb_etoile= ");
         this.nb_etoile = Integer.parseInt(in.nextLine());
         System.out.println("phone= ");
@@ -154,7 +154,6 @@ public class Hotel {
         this.type = type;
     }
 
-  
     public int getNb_etoile() {
         return this.nb_etoile;
     }

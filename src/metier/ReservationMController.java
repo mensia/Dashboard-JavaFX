@@ -5,6 +5,7 @@
  */
 package metier;
 
+import component.SendEmail;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
@@ -65,7 +66,6 @@ public class ReservationMController implements Initializable {
     ServiceHotel sH = new ServiceHotel();
     ServiceChambre sC = new ServiceChambre();
 
-   
     void mohemayaser() {
 
         initHotel();
@@ -100,89 +100,106 @@ public class ReservationMController implements Initializable {
         }
     }
 
-    boolean niv = false;
+    boolean niv = true;
+    Reservation res = new Reservation();
+    Chambre c = new Chambre();
+
+    Hotel h = new Hotel();
 
     @FXML
     private void chooseClicked(ActionEvent event) {
-        Hotel h = new Hotel();
         if (niv) {
 
-            h = (Hotel) tableH.getSelectionModel().getSelectedItem();
+            h = tableH.getSelectionModel().getSelectedItem();
+            hotelLabel.setText(h.getNom());
             h.setChambres();
             // **disponibilite */
 
             // AFFICHAGE
-            if (h.isDispo()) {
+//            if (h.isDispo()) {
+            initChambre();
+            updateChambre(h);
+//            } else {
 
-                initChambre();
-                updateChambre(h);
-            } else {
-
-            }
+//            }
             niv = !niv;
         } else {
-            Chambre c = tableC.getSelectionModel().getSelectedItem();
+//            initChambre();
+//            updateChambre(h);
 
-            // res.setId_hotel(h.getId());
-            int id_user = 0;
-            Period daysBetween = Period.between(entreeDate.getValue(), sortieDate.getValue());
-
-            Reservation res = new Reservation(id_user, h.getId(), daysBetween.getDays() * c.getPrix(),
-                    entreeDate.getValue(), sortieDate.getValue(),
-                    c.getNumber(), "");
-
-            ServiceReservation sR = new ServiceReservation();
-            sR.add(res);
-            c.reserve();
-            sC.update(c);
-
+//            c = tableC.getSelectionModel().getSelectedItem();
+//            chambreLabel.setText(String.valueOf(c.getNumber()));
+//
+//            // res.setId_hotel(h.getId());
+//            int id_user = 0;
+//            Period daysBetween = Period.between(entreeDate.getValue(), sortieDate.getValue());
+//
+//            Reservation res = new Reservation(id_user, h.getId(), daysBetween.getDays() * c.getPrix(),
+//                    entreeDate.getValue(), sortieDate.getValue(),
+//                    c.getNumber(), "");
+//
+//            ServiceReservation sR = new ServiceReservation();
+//            sR.add(res);
+//            c.reserve();
+//            sC.update(c);
         }
 
     }
 
     @FXML
     private void confirmClicked(ActionEvent event) {
+//        ServiceReservation sR = new ServiceReservation();
+        ServiceReservation sR = new ServiceReservation();
+        int id_user = 0;
+        Period daysBetween = Period.between(entreeDate.getValue(), sortieDate.getValue());
+
+        chambreLabel.setText(String.valueOf(c.getNumber()));
+        prix_totaleLabel.setText(String.valueOf(daysBetween.getDays() * c.getPrix()));
+        Reservation res = new Reservation(id_user, h.getId(), daysBetween.getDays() * c.getPrix(),
+                entreeDate.getValue(), sortieDate.getValue(),
+                c.getNumber(), "");
+
+        sR.add(res);
+        c.reserve();
+        sC.update(c);
+//        SendEmail s = new SendEmail("hana.mensia@esprit.tn", "Reservation", "Confirmation de reservation  ");
+
     }
 
     void initHotel() {
 
-        TableColumn id_userColReservation = new TableColumn("id_user");
-        id_userColReservation.setMinWidth(100);
-        id_userColReservation.setCellValueFactory(
-                new PropertyValueFactory<Reservation, String>("id_user"));
+        TableColumn id_responsableColHotel = new TableColumn("id_responsable");
+        id_responsableColHotel.setMinWidth(100);
+        id_responsableColHotel.setCellValueFactory(
+                new PropertyValueFactory<Hotel, String>("id_responsable"));
 
-        TableColumn id_hotelColReservation = new TableColumn("id_hotel");
-        id_hotelColReservation.setMinWidth(100);
-        id_hotelColReservation.setCellValueFactory(
-                new PropertyValueFactory<Reservation, String>("id_hotel"));
+        TableColumn nomColHotel = new TableColumn("nom");
+        nomColHotel.setMinWidth(100);
+        nomColHotel.setCellValueFactory(
+                new PropertyValueFactory<Hotel, String>("nom"));
 
-        TableColumn prixColReservation = new TableColumn("prix");
-        prixColReservation.setMinWidth(100);
-        prixColReservation.setCellValueFactory(
-                new PropertyValueFactory<Reservation, String>("prix"));
+        TableColumn addressColHotel = new TableColumn("address");
+        addressColHotel.setMinWidth(100);
+        addressColHotel.setCellValueFactory(
+                new PropertyValueFactory<Hotel, String>("address"));
 
-        TableColumn entreeColReservation = new TableColumn("entree");
-        entreeColReservation.setMinWidth(100);
-        entreeColReservation.setCellValueFactory(
-                new PropertyValueFactory<Reservation, String>("entree"));
+        TableColumn nb_etoileColHotel = new TableColumn("nb_etoile");
+        nb_etoileColHotel.setMinWidth(100);
+        nb_etoileColHotel.setCellValueFactory(
+                new PropertyValueFactory<Hotel, String>("nb_etoile"));
 
-        TableColumn sortieColReservation = new TableColumn("sortie");
-        sortieColReservation.setMinWidth(100);
-        sortieColReservation.setCellValueFactory(
-                new PropertyValueFactory<Reservation, String>("sortie"));
+        TableColumn phoneColHotel = new TableColumn("phone");
+        phoneColHotel.setMinWidth(100);
+        phoneColHotel.setCellValueFactory(
+                new PropertyValueFactory<Hotel, String>("phone"));
 
-        TableColumn num_chambreColReservation = new TableColumn("num_chambre");
-        num_chambreColReservation.setMinWidth(100);
-        num_chambreColReservation.setCellValueFactory(
-                new PropertyValueFactory<Reservation, String>("num_chambre"));
+        TableColumn capaciteColHotel = new TableColumn("capacite");
+        capaciteColHotel.setMinWidth(100);
+        capaciteColHotel.setCellValueFactory(
+                new PropertyValueFactory<Hotel, String>("capacite"));
 
-        TableColumn descriptionColReservation = new TableColumn("description");
-        descriptionColReservation.setMinWidth(100);
-        descriptionColReservation.setCellValueFactory(
-                new PropertyValueFactory<Reservation, String>("description"));
+        tableH.getColumns().addAll(id_responsableColHotel, nomColHotel, addressColHotel, nb_etoileColHotel, phoneColHotel, capaciteColHotel);
 
-        tableH.getColumns().addAll(id_userColReservation, id_hotelColReservation, prixColReservation,
-                entreeColReservation, sortieColReservation, num_chambreColReservation, descriptionColReservation);
         updateHotel();
     }
 
@@ -201,7 +218,7 @@ public class ReservationMController implements Initializable {
         TableColumn prixColReservation = new TableColumn("Number");
         prixColReservation.setMinWidth(100);
         prixColReservation.setCellValueFactory(
-                new PropertyValueFactory<Reservation, String>("Number"));
+                new PropertyValueFactory<Reservation, String>("number"));
 
         TableColumn entreeColReservation = new TableColumn("disp");
         entreeColReservation.setMinWidth(100);
@@ -209,6 +226,8 @@ public class ReservationMController implements Initializable {
                 new PropertyValueFactory<Reservation, String>("disp"));
         tableC.getColumns().addAll(id_userColReservation, id_hotelColReservation, prixColReservation,
                 entreeColReservation);
+        tableC.toFront();
+        System.out.println("tesst");
         // updateChambre();
     }
 
@@ -223,9 +242,9 @@ public class ReservationMController implements Initializable {
     public void updateHotel() {
         ServiceHotel sh = new ServiceHotel();
         List list = sh.getAll();
-        System.out.println(list);
         ObservableList<Hotel> listO = FXCollections.observableArrayList(list);
 
+        System.out.println(list);
         tableH.setItems(listO);
 
     }
@@ -233,7 +252,8 @@ public class ReservationMController implements Initializable {
     public void updateChambre(Hotel h) {
         ServiceChambre sh = new ServiceChambre();
         List list = sh.getHotel(h);
-        System.out.println(list);
+        System.out.println("Hotel = " + list);
+//        System.out.println(list);
         ObservableList<Chambre> listO = FXCollections.observableArrayList(list);
 
         tableC.setItems(listO);
