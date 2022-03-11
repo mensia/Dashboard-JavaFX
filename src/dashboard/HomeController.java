@@ -271,15 +271,21 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void makeReservationClicked(ActionEvent event) {
+    private void makeReservationClicked(ActionEvent event) throws IOException {
+        pnl_scroll.getChildren().clear();
+        pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/metier/ReservationM.fxml")));
+
     }
 
     @FXML
-    private void commanderVolClicked(ActionEvent event) {
+    private void commanderVolClicked(ActionEvent event) throws IOException {
+        pnl_scroll.getChildren().clear();
+        pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/metier/VolM.fxml")));
     }
 
     @FXML
     private void reserverChambreClicked(ActionEvent event) {
+
     }
 
     @FXML
